@@ -13,7 +13,6 @@
       color: #2d3748;
     }
 
-    /* ── HEADER ── */
     header {
       background: linear-gradient(135deg, #1a535c, #4ecdc4);
       color: white;
@@ -36,7 +35,6 @@
       line-height: 1.6;
     }
 
-    /* ── NAV ── */
     nav {
       background: #1a535c;
       display: flex;
@@ -58,14 +56,12 @@
       color: white;
     }
 
-    /* ── MAIN CONTENT ── */
     main {
       max-width: 900px;
       margin: 0 auto;
       padding: 48px 24px;
     }
 
-    /* ── SECTION TITLES ── */
     .section-title {
       font-size: 1.6rem;
       font-weight: 700;
@@ -93,7 +89,6 @@
       line-height: 1.6;
     }
 
-    /* ── CARDS ── */
     .card-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -132,7 +127,6 @@
       line-height: 1.6;
     }
 
-    /* ── IMAGE SECTION ── */
     .image-section {
       margin-bottom: 56px;
     }
@@ -162,7 +156,6 @@
       opacity: 0.4;
     }
 
-    /* ── LINK SECTION ── */
     .link-section {
       margin-bottom: 56px;
     }
@@ -195,7 +188,6 @@
       border-color: #1a535c;
     }
 
-    /* ── JS SECTION ── */
     .js-section {
       background: white;
       border-radius: 16px;
@@ -229,7 +221,6 @@
     .btn-warning   { background: #f6ad55; color: white; }
     .btn-danger    { background: #fc8181; color: white; }
 
-    /* ── COLOR CHANGE ── */
     #colorBox {
       width: 100%;
       height: 60px;
@@ -245,7 +236,6 @@
       font-size: 0.9rem;
     }
 
-    /* ── COUNTER ── */
     .counter-widget {
       display: flex;
       align-items: center;
@@ -279,7 +269,6 @@
       text-align: center;
     }
 
-    /* ── FORM ── */
     .form-row {
       display: flex;
       gap: 12px;
@@ -322,10 +311,8 @@
       min-height: 24px;
     }
 
-    /* ── DIVIDER ── */
     hr { border: none; border-top: 1.5px solid #e2e8f0; margin: 40px 0; }
 
-    /* ── FOOTER ── */
     footer {
       background: #1a535c;
       color: #cfe8ea;
@@ -339,7 +326,6 @@
 </head>
 <body>
 
-  <!-- ══ STEP 1: HTML Structure ══ -->
   <header>
     <h1>Web Development Basics</h1>
     <p>A hands-on demo page covering HTML structure, CSS styling, and JavaScript interactivity — built as part of the ApexPlanet Task 1.</p>
@@ -354,7 +340,6 @@
 
   <main>
 
-    <!-- ── HEADINGS & PARAGRAPHS ── -->
     <section id="html-section">
       <h2 class="section-title">HTML Elements <span class="badge">Step 1</span></h2>
       <p class="section-desc">Demonstrating basic HTML elements — headings, paragraphs, images, and links — as the structural foundation of the page.</p>
@@ -372,7 +357,6 @@
         </p>
       </div>
 
-      <!-- ── CARD GRID ── -->
       <div class="card-grid">
         <div class="card">
           <div class="card-icon">🏷️</div>
@@ -391,7 +375,6 @@
         </div>
       </div>
 
-      <!-- ── IMAGE PLACEHOLDERS ── -->
       <div class="image-section">
         <h2 class="section-title" style="margin-bottom:8px;">Image Elements</h2>
         <p class="section-desc">Images embedded using the <code>&lt;img&gt;</code> tag — demonstrating the image element with alt text.</p>
@@ -426,7 +409,6 @@
 
     <hr />
 
-    <!-- ── STEP 2: CSS Styling ── -->
     <section id="css-section">
       <h2 class="section-title">CSS Styling <span class="badge">Step 2</span></h2>
       <p class="section-desc">Colors, fonts, spacing, and layout are all applied via CSS. The cards below demonstrate various CSS properties in action.</p>
@@ -461,14 +443,12 @@
 
     <hr />
 
-    <!-- ── STEP 3: JavaScript Interactivity ── -->
     <section id="js-section">
       <h2 class="section-title">JavaScript Interactivity <span class="badge">Step 3</span></h2>
       <p class="section-desc">Buttons that trigger actions — alerts, dynamic DOM updates, a counter, and more — demonstrating core JavaScript interactivity.</p>
 
       <div class="js-section">
 
-        <!-- Alert Button -->
         <p style="font-weight:600; color:#2d3748; margin-bottom:4px;">1. Alert Button</p>
         <p style="font-size:0.88rem; color:#718096; margin-bottom:14px;">Click the button to trigger a browser alert message.</p>
         <button class="demo-btn btn-primary" onclick="alert('Hello! You clicked the alert button. JavaScript is working! 🎉')">
@@ -477,7 +457,6 @@
 
         <hr style="margin: 28px 0;" />
 
-        <!-- Color Changer -->
         <p style="font-weight:600; color:#2d3748; margin-bottom:4px;">2. Dynamic Color Changer</p>
         <p style="font-size:0.88rem; color:#718096; margin-bottom:14px;">Click a button to change the color of the box below using JavaScript.</p>
         <div class="js-demo">
@@ -490,7 +469,6 @@
 
         <hr style="margin: 28px 0;" />
 
-        <!-- Counter -->
         <p style="font-weight:600; color:#2d3748; margin-bottom:4px;">3. Click Counter</p>
         <p style="font-size:0.88rem; color:#718096; margin-bottom:4px;">Increment or decrement the counter using the buttons.</p>
         <div class="counter-widget">
@@ -502,7 +480,6 @@
 
         <hr style="margin: 28px 0;" />
 
-        <!-- Greeting Form -->
         <p style="font-weight:600; color:#2d3748; margin-bottom:4px;">4. Greeting Generator</p>
         <p style="font-size:0.88rem; color:#718096; margin-bottom:4px;">Type your name and click the button — JavaScript generates a personalised greeting.</p>
         <div class="form-row">
@@ -515,8 +492,6 @@
     </section>
 
     <hr />
-
-    <!-- ── LINKS ── -->
     <section id="links-section">
       <h2 class="section-title">Useful Links</h2>
       <p class="section-desc">Navigation links to external resources — demonstrating the <code>&lt;a href=""&gt;</code> element with descriptive text.</p>
@@ -535,7 +510,6 @@
     Built for <strong>ApexPlanet Software Pvt Ltd</strong> — Task 1: Basics of Web Development &nbsp;|&nbsp; HTML · CSS · JavaScript
   </footer>
 
-  <!-- ══ JavaScript ══ -->
   <script>
     let count = 0;
 
