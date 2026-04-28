@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2 - HTML, CSS, JavaScript</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Navigation using Flexbox */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+            padding: 15px 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        nav .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        nav ul li a:hover {
+            opacity: 0.8;
+        }
+
+        /* Main Grid Layout */
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Section Cards */
+        .section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            color: #2e7d32;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #c8e6c9;
+            padding-bottom: 10px;
+        }
+
+        /* Contact Form Styles */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #4caf50;
+        }
+
+        .form-group input.error,
+        .form-group textarea.error {
+            border-color: #f44336;
+        }
+
+        .error-message {
+            color: #f44336;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+        }
+
+        .success-message {
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        /* To-Do List Styles */
+        .todo-input-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .todo-input-container input {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .todo-input-container input:focus {
+            outline: none;
+            border-color: #4caf50;
+        }
+
+        .todo-list {
+            list-style: none;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .todo-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            transition: background 0.3s;
+        }
+
+        .todo-item:hover {
+            background: #e8f5e9;
+        }
+
+        .todo-item.completed {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+
+        .todo-item span {
+            flex: 1;
+            cursor: pointer;
+        }
+
+        .todo-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-small {
+            padding: 6px 12px;
+            font-size: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-complete {
+            background: #4caf50;
+            color: white;
+        }
+
+        .btn-delete {
+            background: #f44336;
+            color: white;
+        }
+
+        .btn-small:hover {
+            opacity: 0.8;
+        }
+
+        .empty-state {
+            text-align: center;
+            color: #999;
+            padding: 40px;
+        }
+
+        /* Image Gallery Styles */
+        .gallery-container {
+            margin-top: 20px;
+        }
+
+        .gallery-add {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .gallery-add input {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-item .remove-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: rgba(244, 67, 54, 0.9);
+            color: white;
+            border: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .gallery-item:hover .remove-btn {
+            opacity: 1;
+        }
+
+        /* Responsive Media Queries */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            nav {
+                padding: 10px 20px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation using Flexbox -->
+    <nav>
+        <div class="logo">Task 2 Project</div>
+        <ul>
+            <li><a href="#contact">Contact Form</a></li>
+            <li><a href="#todo">To-Do List</a></li>
+            <li><a href="#gallery">Image Gallery</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Container using CSS Grid -->
+    <div class="container">
+        <!-- Contact Form Section -->
+        <section class="section" id="contact">
+            <h2>Contact Form</h2>
+            <form id="contactForm" novalidate>
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name">
+                    <div class="error-message" id="nameError">Please enter your name</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email">
+                    <div class="error-message" id="emailError">Please enter a valid email address</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Enter your message"></textarea>
+                    <div class="error-message" id="messageError">Please enter a message</div>
+                </div>
+
+                <button type="submit" class="btn">Submit</button>
+                <div class="success-message" id="successMessage">
+                    Form submitted successfully!
+                </div>
+            </form>
+        </section>
+
+        <!-- To-Do List Section -->
+        <section class="section" id="todo">
+            <h2>Dynamic To-Do List</h2>
+            <div class="todo-input-container">
+                <input type="text" id="todoInput" placeholder="Add a new task...">
+                <button class="btn" onclick="addTodo()">Add Task</button>
+            </div>
+            <ul class="todo-list" id="todoList">
+                <div class="empty-state" id="emptyState">No tasks yet. Add one above!</div>
+            </ul>
+        </section>
+
+        <!-- Image Gallery Section -->
+        <section class="section" id="gallery">
+            <h2>Dynamic Image Gallery</h2>
+            <div class="gallery-add">
+                <input type="url" id="imageUrl" placeholder="Enter image URL...">
+                <button class="btn" onclick="addImage()">Add Image</button>
+            </div>
+            <div class="gallery-grid" id="galleryGrid"></div>
+        </section>
+
+        <!-- Info Section -->
+        <section class="section">
+            <h2>Features Implemented</h2>
+            <ul style="line-height: 2; color: #555;">
+                <li>✅ Contact form with HTML & CSS</li>
+                <li>✅ JavaScript form validation</li>
+                <li>✅ Required field validation</li>
+                <li>✅ Email format validation</li>
+                <li>✅ Flexbox navigation</li>
+                <li>✅ CSS Grid layout</li>
+                <li>✅ Responsive design with media queries</li>
+                <li>✅ Dynamic To-Do list (add/remove)</li>
+                <li>✅ Dynamic Image gallery (add/remove)</li>
+                <li>✅ DOM manipulation</li>
+            </ul>
+        </section>
+    </div>
+
+    <script>
+        // ==================== FORM VALIDATION ====================
+        const contactForm = document.getElementById('contactForm');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const messageInput = document.getElementById('message');
+        const nameError = document.getElementById('nameError');
+        const emailError = document.getElementById('emailError');
+        const messageError = document.getElementById('messageError');
+        const successMessage = document.getElementById('successMessage');
+
+        // Email validation regex
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Show error function
+        function showError(input, errorElement) {
+            input.classList.add('error');
+            errorElement.classList.add('show');
+        }
+
+        // Hide error function
+        function hideError(input, errorElement) {
+            input.classList.remove('error');
+            errorElement.classList.remove('show');
+        }
+
+        // Real-time validation
+        nameInput.addEventListener('input', () => {
+            if (nameInput.value.trim()) {
+                hideError(nameInput, nameError);
+            }
+        });
+
+        emailInput.addEventListener('input', () => {
+            if (isValidEmail(emailInput.value)) {
+                hideError(emailInput, emailError);
+            }
+        });
+
+        messageInput.addEventListener('input', () => {
+            if (messageInput.value.trim()) {
+                hideError(messageInput, messageError);
+            }
+        });
+
+        // Form submit handler
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            let isValid = true;
+
+            // Validate name
+            if (!nameInput.value.trim()) {
+                showError(nameInput, nameError);
+                isValid = false;
+            } else {
+                hideError(nameInput, nameError);
+            }
+
+            // Validate email
+            if (!isValidEmail(emailInput.value)) {
+                showError(emailInput, emailError);
+                isValid = false;
+            } else {
+                hideError(emailInput, emailError);
+            }
+
+            // Validate message
+            if (!messageInput.value.trim()) {
+                showError(messageInput, messageError);
+                isValid = false;
+            } else {
+                hideError(messageInput, messageError);
+            }
+
+            // Show success message if valid
+            if (isValid) {
+                successMessage.classList.add('show');
+                contactForm.reset();
+                
+                setTimeout(() => {
+                    successMessage.classList.remove('show');
+                }, 3000);
+            }
+        });
+
+        // ==================== TO-DO LIST ====================
+        const todoInput = document.getElementById('todoInput');
+        const todoList = document.getElementById('todoList');
+        const emptyState = document.getElementById('emptyState');
+
+        let todos = [];
+
+        function updateEmptyState() {
+            if (todos.length === 0) {
+                emptyState.style.display = 'block';
+            } else {
+                emptyState.style.display = 'none';
+            }
+        }
+
+        function renderTodos() {
+            // Clear current list except empty state
+            const items = todoList.querySelectorAll('.todo-item');
+            items.forEach(item => item.remove());
+
+            todos.forEach((todo, index) => {
+                const li = document.createElement('li');
+                li.className = `todo-item ${todo.completed ? 'completed' : ''}`;
+                li.innerHTML = `
+                    <span onclick="toggleTodo(${index})">${todo.text}</span>
+                    <div class="todo-actions">
+                        <button class="btn-small btn-complete" onclick="toggleTodo(${index})">
+                            ${todo.completed ? 'Undo' : 'Complete'}
+                        </button>
+                        <button class="btn-small btn-delete" onclick="deleteTodo(${index})">Delete</button>
+                    </div>
+                `;
+                todoList.appendChild(li);
+            });
+
+            updateEmptyState();
+        }
+
+        function addTodo() {
+            const text = todoInput.value.trim();
+            if (text) {
+                todos.push({ text, completed: false });
+                todoInput.value = '';
+                renderTodos();
+            }
+        }
+
+        function toggleTodo(index) {
+            todos[index].completed = !todos[index].completed;
+            renderTodos();
+        }
+
+        function deleteTodo(index) {
+            todos.splice(index, 1);
+            renderTodos();
+        }
+
+        // Enter key support for todo input
+        todoInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                addTodo();
+            }
+        });
+
+        // ==================== IMAGE GALLERY ====================
+        const imageUrl = document.getElementById('imageUrl');
+        const galleryGrid = document.getElementById('galleryGrid');
+
+        let images = [];
+
+        // Default images for gallery
+        const defaultImages = [
+            'https://picsum.photos/200/200?random=1',
+            'https://picsum.photos/200/200?random=2',
+            'https://picsum.photos/200/200?random=3',
+            'https://picsum.photos/200/200?random=4'
+        ];
+
+        function renderGallery() {
+            galleryGrid.innerHTML = '';
+
+            images.forEach((img, index) => {
+                const div = document.createElement('div');
+                div.className = 'gallery-item';
+                div.innerHTML = `
+                    <img src="${img}" alt="Gallery image ${index + 1}" onerror="this.src='https://via.placeholder.com/200?text=Invalid+URL'">
+                    <button class="remove-btn" onclick="removeImage(${index})">×</button>
+                `;
+                galleryGrid.appendChild(div);
+            });
+        }
+
+        function addImage() {
+            const url = imageUrl.value.trim();
+            if (url) {
+                images.push(url);
+                imageUrl.value = '';
+                renderGallery();
+            }
+        }
+
+        function removeImage(index) {
+            images.splice(index, 1);
+            renderGallery();
+        }
+
+        // Enter key support for image input
+        imageUrl.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                addImage();
+            }
+        });
+
+        // Initialize with default images
+        images = [...defaultImages];
+        renderGallery();
+    </script>
+</body>
+</html>
