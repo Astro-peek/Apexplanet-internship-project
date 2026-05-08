@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 3 v2 - Weather API</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0d9488;
+            --primary-dark: #0f766e;
+            --secondary: #1e293b;
+            --accent: #2dd4bf;
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --text: #f1f5f9;
+            --text-muted: #94a3b8;
+            --success: #22c55e;
+            --error: #ef4444;
+            --warning: #f59e0b;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(45, 212, 191, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+
+        main {
+            padding-top: 80px;
+        }
+
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .card-grid {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid rgba(45, 212, 191, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(45, 212, 191, 0.15);
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .quiz-container {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid rgba(45, 212, 191, 0.2);
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .question-counter {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 3px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 3px;
+            transition: width 0.3s;
+        }
+
+        .question {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .option {
+            background: rgba(255,255,255,0.05);
+            border: 2px solid transparent;
+            border-radius: 10px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .option:hover:not(.disabled) {
+            background: rgba(45, 212, 191, 0.1);
+            border-color: var(--primary);
+        }
+
+        .option.correct {
+            background: rgba(34, 197, 94, 0.2);
+            border-color: var(--success);
+        }
+
+        .option.wrong {
+            background: rgba(239, 68, 68, 0.2);
+            border-color: var(--error);
+        }
+
+        .option.disabled {
+            cursor: default;
+            opacity: 0.7;
+        }
+
+        .option-indicator {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .option.correct .option-indicator {
+            background: var(--success);
+            border-color: var(--success);
+            color: white;
+        }
+
+        .option.wrong .option-indicator {
+            background: var(--error);
+            border-color: var(--error);
+            color: white;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 1.5rem;
+        }
+
+        .btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(13, 148, 136, 0.4);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .result-screen {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .result-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .score-text {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .score-detail {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .weather-container {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            max-width: 500px;
+            margin: 0 auto;
+            border: 1px solid rgba(45, 212, 191, 0.2);
+        }
+
+        .weather-search {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .weather-search input {
+            flex: 1;
+            background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(45, 212, 191, 0.2);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            color: var(--text);
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .weather-search input:focus {
+            border-color: var(--accent);
+        }
+
+        .weather-search input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .weather-search .btn {
+            margin-top: 0;
+            padding: 0.75rem 1.5rem;
+        }
+
+        .weather-display {
+            text-align: center;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .weather-icon {
+            font-size: 5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .weather-temp {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .weather-desc {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            text-transform: capitalize;
+            margin-bottom: 1rem;
+        }
+
+        .weather-location {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .weather-details {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .weather-detail {
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            padding: 1rem;
+        }
+
+        .weather-detail-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .weather-detail-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .weather-detail-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(45, 212, 191, 0.2);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .error-message {
+            color: var(--error);
+            background: rgba(239, 68, 68, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            margin: 2rem 0;
+            border: none;
+        }
+
+        @media (max-width: 1023px) {
+            .card-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .card h3 {
+                font-size: 1.1rem;
+            }
+
+            .card p {
+                font-size: 0.9rem;
+            }
+
+            .weather-details {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 767px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: rgba(15, 23, 42, 0.98);
+                flex-direction: column;
+                padding: 1.5rem;
+                gap: 1rem;
+                transform: translateY(-150%);
+                transition: transform 0.3s;
+                border-bottom: 1px solid rgba(45, 212, 191, 0.2);
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 2rem 1rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            .quiz-container, .weather-container {
+                padding: 1.5rem;
+            }
+
+            .question {
+                font-size: 1.1rem;
+            }
+
+            .weather-temp {
+                font-size: 2.5rem;
+            }
+
+            .weather-details {
+                grid-template-columns: 1fr;
+            }
+
+            .weather-search {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Project 3</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#responsive">Responsive Design</a></li>
+                <li><a href="#quiz">Interactive Quiz</a></li>
+                <li><a href="#api">Weather API</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section id="responsive">
+            <h2 class="section-title">Part 1: Responsive Design</h2>
+            <p class="section-subtitle">Card grid adapts to 3 columns (desktop), 2 columns (tablet), 1 column (mobile)</p>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">📱</div>
+                    <h3>Mobile First</h3>
+                    <p>Design starts with mobile layouts and progressively enhances for larger screens using media queries.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">💻</div>
+                    <h3>Desktop Experience</h3>
+                    <p>Full-featured layouts with enhanced visuals and more content visible simultaneously on large screens.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📊</div>
+                    <h3>Fluid Grids</h3>
+                    <p>Flexible grid systems that automatically adjust column counts based on available viewport width.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🎨</div>
+                    <h3>Adaptive UI</h3>
+                    <p>Typography, spacing, and component sizes that scale appropriately across all device sizes.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">⚡</div>
+                    <h3>Performance</h3>
+                    <p>Optimized assets and conditional loading ensure fast experiences on all connection speeds.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">♿</div>
+                    <h3>Accessibility</h3>
+                    <p>Touch-friendly targets, readable fonts, and keyboard navigation work on every device.</p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <section id="quiz">
+            <h2 class="section-title">Part 2: Interactive Quiz</h2>
+            <p class="section-subtitle">Test your knowledge with this 5-question quiz</p>
+            
+            <div class="quiz-container" id="quizContainer"></div>
+        </section>
+
+        <hr class="divider">
+
+        <section id="api">
+            <h2 class="section-title">Part 3: Weather API</h2>
+            <p class="section-subtitle">Get real-time weather data for any city</p>
+            
+            <div class="weather-container">
+                <div class="weather-search">
+                    <input type="text" id="cityInput" placeholder="Enter city name (e.g., London, Tokyo)" value="New York">
+                    <button class="btn" onclick="fetchWeather()">Search</button>
+                </div>
+                <div class="weather-display" id="weatherDisplay">
+                    <div class="spinner"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        const quizData = [
+            {
+                question: "What does CSS stand for?",
+                options: ["Creative Style Sheets", "Cascading Style Sheets", "Computer Style Sheets", "Colorful Style Sheets"],
+                correct: 1
+            },
+            {
+                question: "Which HTML tag is used to include JavaScript?",
+                options: ["<js>", "<javascript>", "<script>", "<code>"],
+                correct: 2
+            },
+            {
+                question: "What is the correct syntax to declare a constant in JavaScript?",
+                options: ["var x = 5", "let x = 5", "const x = 5", "constant x = 5"],
+                correct: 2
+            },
+            {
+                question: "Which CSS property controls text size?",
+                options: ["text-style", "font-size", "text-size", "font-style"],
+                correct: 1
+            },
+            {
+                question: "What method is used to fetch data from an API in JavaScript?",
+                options: ["fetch()", "get()", "request()", "api()"],
+                correct: 0
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answered = false;
+
+        function renderQuiz() {
+            const container = document.getElementById('quizContainer');
+            
+            if (currentQuestion >= quizData.length) {
+                renderResults();
+                return;
+            }
+
+            const q = quizData[currentQuestion];
+            const progress = ((currentQuestion) / quizData.length) * 100;
+
+            container.innerHTML = `
+                <div class="quiz-header">
+                    <span class="question-counter">Question ${currentQuestion + 1} of ${quizData.length}</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: ${progress}%"></div>
+                </div>
+                <div class="fade-in">
+                    <div class="question">${q.question}</div>
+                    <div class="options" id="options">
+                        ${q.options.map((opt, idx) => `
+                            <div class="option" data-index="${idx}" onclick="selectOption(${idx})">
+                                <span class="option-indicator">${String.fromCharCode(65 + idx)}</span>
+                                <span>${opt}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="btn-container">
+                        <button class="btn" id="nextBtn" onclick="nextQuestion()" disabled>Next</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function selectOption(index) {
+            if (answered) return;
+            
+            answered = true;
+            const q = quizData[currentQuestion];
+            const options = document.querySelectorAll('.option');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            options.forEach((opt, idx) => {
+                opt.classList.add('disabled');
+                if (idx === q.correct) {
+                    opt.classList.add('correct');
+                    opt.querySelector('.option-indicator').textContent = '✓';
+                } else if (idx === index && idx !== q.correct) {
+                    opt.classList.add('wrong');
+                    opt.querySelector('.option-indicator').textContent = '✗';
+                }
+            });
+
+            if (index === q.correct) {
+                score++;
+            }
+
+            nextBtn.disabled = false;
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            answered = false;
+            renderQuiz();
+        }
+
+        function renderResults() {
+            const container = document.getElementById('quizContainer');
+            const percentage = Math.round((score / quizData.length) * 100);
+            let icon, message;
+
+            if (percentage === 100) {
+                icon = '🏆';
+                message = 'Perfect Score!';
+            } else if (percentage >= 80) {
+                icon = '🎉';
+                message = 'Great Job!';
+            } else if (percentage >= 60) {
+                icon = '👍';
+                message = 'Good Effort!';
+            } else {
+                icon = '📚';
+                message = 'Keep Learning!';
+            }
+
+            container.innerHTML = `
+                <div class="result-screen fade-in">
+                    <div class="result-icon">${icon}</div>
+                    <div class="score-text">${message}</div>
+                    <div class="score-detail">You scored ${score} out of ${quizData.length} (${percentage}%)</div>
+                    <button class="btn" onclick="restartQuiz()">Restart Quiz</button>
+                </div>
+            `;
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            answered = false;
+            renderQuiz();
+        }
+
+        renderQuiz();
+
+        const weatherIcons = {
+            'clear sky': '☀️',
+            'few clouds': '🌤️',
+            'scattered clouds': '⛅',
+            'broken clouds': '☁️',
+            'shower rain': '🌦️',
+            'rain': '🌧️',
+            'light rain': '🌧️',
+            'moderate rain': '🌧️',
+            'heavy rain': '⛈️',
+            'thunderstorm': '⛈️',
+            'snow': '🌨️',
+            'mist': '🌫️',
+            'fog': '🌫️',
+            'haze': '🌫️'
+        };
+
+        function getWeatherIcon(description) {
+            const desc = description.toLowerCase();
+            for (const [key, icon] of Object.entries(weatherIcons)) {
+                if (desc.includes(key)) return icon;
+            }
+            return '🌡️';
+        }
+
+        async function fetchWeather() {
+            const city = document.getElementById('cityInput').value.trim();
+            const display = document.getElementById('weatherDisplay');
+
+            if (!city) {
+                display.innerHTML = '<div class="error-message">Please enter a city name</div>';
+                return;
+            }
+
+            display.innerHTML = '<div class="spinner"></div>';
+
+            try {
+                const geoResponse = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1`);
+                const geoData = await geoResponse.json();
+
+                if (!geoData.results || geoData.results.length === 0) {
+                    throw new Error('City not found');
+                }
+
+                const { latitude, longitude, name, country } = geoData.results[0];
+
+                const weatherResponse = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`);
+                const weatherData = await weatherResponse.json();
+
+                const temp = Math.round(weatherData.current_weather.temperature);
+                const windSpeed = weatherData.current_weather.windspeed;
+                const weatherCode = weatherData.current_weather.weathercode;
+
+                const weatherDescriptions = {
+                    0: 'clear sky', 1: 'few clouds', 2: 'scattered clouds', 3: 'broken clouds',
+                    45: 'fog', 48: 'fog', 51: 'light rain', 53: 'moderate rain', 55: 'heavy rain',
+                    61: 'rain', 63: 'rain', 65: 'heavy rain', 71: 'snow', 73: 'snow', 75: 'snow',
+                    95: 'thunderstorm', 96: 'thunderstorm', 99: 'thunderstorm'
+                };
+
+                const description = weatherDescriptions[weatherCode] || 'clear sky';
+                const icon = getWeatherIcon(description);
+
+                display.innerHTML = `
+                    <div class="fade-in">
+                        <div class="weather-location">📍 ${name}, ${country || 'Unknown'}</div>
+                        <div class="weather-icon">${icon}</div>
+                        <div class="weather-temp">${temp}°C</div>
+                        <div class="weather-desc">${description}</div>
+                        <div class="weather-details">
+                            <div class="weather-detail">
+                                <div class="weather-detail-icon">💨</div>
+                                <div class="weather-detail-value">${windSpeed} km/h</div>
+                                <div class="weather-detail-label">Wind</div>
+                            </div>
+                            <div class="weather-detail">
+                                <div class="weather-detail-icon">🌡️</div>
+                                <div class="weather-detail-value">${temp}°C</div>
+                                <div class="weather-detail-label">Feels Like</div>
+                            </div>
+                            <div class="weather-detail">
+                                <div class="weather-detail-icon">☁️</div>
+                                <div class="weather-detail-value">${weatherCode > 3 ? 'Yes' : 'No'}</div>
+                                <div class="weather-detail-label">Cloudy</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } catch (error) {
+                display.innerHTML = `
+                    <div class="error-message">⚠️ ${error.message === 'City not found' ? 'City not found. Please try another city name.' : 'Failed to fetch weather data. Please try again.'}</div>
+                    <button class="btn" onclick="fetchWeather()">Try Again</button>
+                `;
+            }
+        }
+
+        document.getElementById('cityInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') fetchWeather();
+        });
+
+        fetchWeather();
+    </script>
+</body>
+</html>
