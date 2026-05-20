@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creative Fullstack Developer | Portfolio</title>
+  <meta name="description"
+    content="Stunning responsive personal portfolio website showcasing modern web development projects, creative skills, and experience. Built with HTML, CSS, and Vanilla JS.">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <div class="bg-blob blob-indigo"></div>
+  <div class="bg-blob blob-teal"></div>
+
+  <header class="header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo-link" id="logoLink">
+        <span class="logo-text text-gradient">Alex Dev</span>
+        <span class="logo-dot"></span>
+      </a>
+
+      <nav class="nav-menu" id="navMenu">
+        <a href="#about" class="nav-link active" id="navLinkAbout">About</a>
+        <a href="#projects" class="nav-link" id="navLinkProjects">Projects</a>
+        <a href="#contact" class="nav-link" id="navLinkContact">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+          <svg class="moon-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20"
+            height="20">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z">
+            </path>
+          </svg>
+          <svg class="sun-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20"
+            height="20">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M12 3v2.25m0 13.5V21M4.93 4.93l1.591 1.591m10.954 10.954l1.591 1.591M3 12h2.25m13.5 0H21m-2.25 4.93l-1.591-1.591M6.52 6.52l-1.591-1.591M12 7.5a4.5 4.5 0 100 9 4.5 4.5 0 000-9z">
+            </path>
+          </svg>
+        </button>
+
+        <button class="hamburger" id="hamburger" aria-label="Open Navigation Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero" id="hero">
+      <div class="container hero-grid">
+
+        <div class="hero-content">
+          <span class="hero-tag">Welcome to my space</span>
+          <h1 class="hero-title">Hello, I'm a Paras Gupta<br><span class="text-gradient" id="typingText">Fullstack
+              Developer</span>
+          </h1>
+          <p class="hero-desc">I craft exceptional digital user experiences using modern, high-performance HTML, clean
+            vanilla CSS, and robust JavaScript logic. Let's build something extraordinary together.</p>
+          <div class="hero-btns">
+            <a href="#projects" class="btn btn-primary" id="heroBtnWork">View My Work</a>
+            <a href="contact.html" class="btn btn-secondary" id="heroBtnContact">Get In Touch</a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-glow-ring"></div>
+          <div class="hero-avatar-wrapper">
+            <svg class="avatar-placeholder-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="200" height="200" fill="url(#hero-gradient)" />
+              <circle cx="100" cy="85" r="35" fill="var(--bg-primary)" />
+              <path
+                d="M100 45C77.9086 45 60 62.9086 60 85C60 97.4589 65.6881 108.59 74.6295 116H125.37C134.312 108.59 140 97.4589 140 85C140 62.9086 122.091 45 100 45Z"
+                fill="url(#avatar-grad)" />
+              <path d="M40 160C40 137.909 57.9086 120 80 120H120C142.091 120 160 137.909 160 160V175H40V160Z"
+                fill="var(--bg-primary)" />
+              <path d="M50 155C50 137.909 67.9086 125 90 125H110C132.091 125 150 137.909 150 155V175H50V155Z"
+                fill="url(#avatar-grad)" />
+              <defs>
+                <linearGradient id="hero-gradient" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="var(--accent-1)" />
+                  <stop offset="1" stop-color="var(--accent-2)" />
+                </linearGradient>
+                <linearGradient id="avatar-grad" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="var(--text-primary)" />
+                  <stop offset="1" stop-color="var(--text-secondary)" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">About Me</h2>
+          <p class="section-subtitle">A brief introduction to my background, skills, and code philosophies.</p>
+        </div>
+
+        <div class="about-grid">
+
+          <div class="about-visual">
+            <div class="about-photo-wrapper">
+              <div class="photo-placeholder">
+                <svg class="photo-placeholder-svg" fill="none" stroke="currentColor" stroke-width="1.5"
+                  viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z">
+                  </path>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-content">
+            <h3>Designing With Purpose, Coding With Passion</h3>
+            <p class="about-bio">I'm a passionate Front-End Developer with a strong focus on building responsive, highly
+              semantic, and visual web applications. I bridge the gap between design and engineering by creating fluid
+              user interfaces with state-of-the-art interactive effects.</p>
+            <p class="about-bio">Currently, I am refining my full-stack capabilities, but my core dedication lies in
+              vanilla JavaScript, modern CSS Grid/Flexbox layouts, and optimized web page structures.</p>
+
+            <div class="skills-container">
+              <h4 class="skills-title">Core Skills</h4>
+              <div class="skills-grid">
+
+                <div class="skill-tag">
+                  <span class="skill-icon">🎨</span>
+                  <span class="skill-name">HTML5</span>
+                </div>
+
+                <div class="skill-tag">
+                  <span class="skill-icon">⚡</span>
+                  <span class="skill-name">CSS3 / Grid</span>
+                </div>
+
+                <div class="skill-tag">
+                  <span class="skill-icon">⚡</span>
+                  <span class="skill-name">JavaScript</span>
+                </div>
+
+                <div class="skill-tag">
+                  <span class="skill-icon">💻</span>
+                  <span class="skill-name">React</span>
+                </div>
+
+                <div class="skill-tag">
+                  <span class="skill-icon">📱</span>
+                  <span class="skill-name">Responsive</span>
+                </div>
+
+                <div class="skill-tag">
+                  <span class="skill-icon">📊</span>
+                  <span class="skill-name">Git / GitHub</span>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top: 2.5rem; text-align: left;">
+              <a href="about.html" class="btn btn-secondary" id="aboutPageLink">Read Full Experience Timeline</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects"
+      style="background: var(--bg-secondary); border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border);">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Featured Projects</h2>
+          <p class="section-subtitle">Explore a collection of hand-crafted sample projects demonstrating standard
+            layouts, components, and logic.</p>
+        </div>
+
+        <div class="projects-grid">
+
+          <div class="project-card glass-card">
+            <div class="project-img-wrapper">
+              <svg class="project-placeholder-svg" viewBox="0 0 350 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="350" height="200" fill="url(#proj1-gradient)" opacity="0.1" />
+                <path d="M50 150H300" stroke="var(--accent-1)" stroke-width="4" stroke-linecap="round" />
+                <rect x="70" y="50" width="100" height="80" rx="6" fill="var(--bg-tertiary)" stroke="var(--accent-1)"
+                  stroke-width="2" />
+                <rect x="190" y="50" width="90" height="35" rx="4" fill="var(--bg-tertiary)" />
+                <rect x="190" y="95" width="90" height="35" rx="4" fill="var(--accent-2)" opacity="0.2" />
+                <defs>
+                  <linearGradient id="proj1-gradient" x1="0" y1="0" x2="350" y2="200" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="var(--accent-1)" />
+                    <stop offset="1" stop-color="var(--accent-2)" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <div class="project-content">
+              <div class="project-tags">
+                <span class="project-tag">HTML5</span>
+                <span class="project-tag">CSS Grid</span>
+                <span class="project-tag">JS ES6</span>
+              </div>
+              <h3 class="project-title">Cyber-Cart Storefront</h3>
+              <p class="project-desc">A premium responsive e-commerce landing page with detailed item filter sorting,
+                micro-interactive cart widgets, and responsive Flexbox grid cards.</p>
+              <div class="project-links">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="project-link"
+                  id="p1Github">
+                  <svg fill="currentColor" viewBox="0 0 24 24" width="18" height="18">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.138 20.162 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
+                  </svg>
+                  <span>Code</span>
+                </a>
+                <a href="https://google.com" target="_blank" rel="noopener noreferrer" class="project-link" id="p1Live">
+                  <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18" height="18">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                  <span>Live Demo</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card glass-card">
+            <div class="project-img-wrapper">
+              <svg class="project-placeholder-svg" viewBox="0 0 350 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="350" height="200" fill="url(#proj2-gradient)" opacity="0.1" />
+                <rect x="40" y="40" width="80" height="120" rx="6" fill="var(--bg-tertiary)" stroke="var(--accent-2)"
+                  stroke-width="2" />
+                <rect x="135" y="40" width="80" height="120" rx="6" fill="var(--bg-tertiary)" opacity="0.6" />
+                <rect x="230" y="40" width="80" height="120" rx="6" fill="var(--bg-tertiary)" opacity="0.6" />
+                <circle cx="80" cy="70" r="15" fill="var(--accent-2)" opacity="0.3" />
+                <line x1="60" y1="110" x2="100" y2="110" stroke="var(--text-secondary)" stroke-width="3"
+                  stroke-linecap="round" />
+                <line x1="60" y1="125" x2="85" y2="125" stroke="var(--text-secondary)" stroke-width="3"
+                  stroke-linecap="round" />
+                <defs>
+                  <linearGradient id="proj2-gradient" x1="0" y1="0" x2="350" y2="200" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="var(--accent-1)" />
+                    <stop offset="1" stop-color="var(--accent-2)" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <div class="project-content">
+              <div class="project-tags">
+                <span class="project-tag">JS Dom</span>
+                <span class="project-tag">SVG Anim</span>
+                <span class="project-tag">Local Storage</span>
+              </div>
+              <h3 class="project-title">Apex Task Board</h3>
+              <p class="project-desc">A premium client-side KANBAN style project manager. Drag-and-drop simulated board
+                cards, full state persistence in LocalStorage, and interactive notifications.</p>
+              <div class="project-links">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="project-link"
+                  id="p2Github">
+                  <svg fill="currentColor" viewBox="0 0 24 24" width="18" height="18">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.138 20.162 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
+                  </svg>
+                  <span>Code</span>
+                </a>
+                <a href="https://google.com" target="_blank" rel="noopener noreferrer" class="project-link" id="p2Live">
+                  <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18" height="18">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                  <span>Live Demo</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card glass-card">
+            <div class="project-img-wrapper">
+              <svg class="project-placeholder-svg" viewBox="0 0 350 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="350" height="200" fill="url(#proj3-gradient)" opacity="0.1" />
+                <circle cx="175" cy="100" r="45" fill="var(--bg-tertiary)" stroke="var(--accent-1)" stroke-width="2" />
+                <path
+                  d="M150 110C150 95 165 90 180 92C195 90 205 100 205 110C215 110 220 118 215 125C210 132 140 132 135 125C130 118 140 110 150 110Z"
+                  fill="var(--accent-2)" opacity="0.8" />
+                <circle cx="215" cy="70" r="14" fill="var(--warning)" opacity="0.6" />
+                <defs>
+                  <linearGradient id="proj3-gradient" x1="0" y1="0" x2="350" y2="200" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="var(--accent-1)" />
+                    <stop offset="1" stop-color="var(--accent-2)" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <div class="project-content">
+              <div class="project-tags">
+                <span class="project-tag">API Fetch</span>
+                <span class="project-tag">Async / Await</span>
+                <span class="project-tag">CSS Flex</span>
+              </div>
+              <h3 class="project-title">Sky-Cast Weather</h3>
+              <p class="project-desc">A beautiful weather application. Fetches meteorological telemetry using
+                geographical coordinates, displays a 5-day predictive forecast, and scales with smooth HSL colors.</p>
+              <div class="project-links">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="project-link"
+                  id="p3Github">
+                  <svg fill="currentColor" viewBox="0 0 24 24" width="18" height="18">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.138 20.162 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
+                  </svg>
+                  <span>Code</span>
+                </a>
+                <a href="https://google.com" target="_blank" rel="noopener noreferrer" class="project-link" id="p3Live">
+                  <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18" height="18">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                  <span>Live Demo</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 4rem; text-align: center;">
+          <a href="projects.html" class="btn btn-primary" id="projectsPageLink">View Comprehensive Projects Grid</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Contact Me</h2>
+          <p class="section-subtitle">Have a project in mind, want to collaborate, or just say hello? Drop a line below!
+          </p>
+        </div>
+
+        <div class="contact-grid">
+
+          <div class="contact-info">
+            <h3>Get In Touch</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 0.8rem;">Feel free to contact me
+              using the form or through my professional handles. I am always open to discussing new opportunities,
+              designs, or technical inquiries.</p>
+
+            <div class="info-card glass-card">
+              <div class="info-icon">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75">
+                  </path>
+                </svg>
+              </div>
+              <div class="info-details">
+                <h4>Email Me</h4>
+                <p><a href="mailto:alex.dev@example.com" id="contactEmailLink">alex.dev@example.com</a></p>
+              </div>
+            </div>
+
+            <div class="info-card glass-card">
+              <div class="info-icon">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25s-7.5-4.108-7.5-11.25g-3 3 0 116 0z"></path>
+                </svg>
+              </div>
+              <div class="info-details">
+                <h4>Location</h4>
+                <p>San Francisco, CA</p>
+              </div>
+            </div>
+
+            <div class="socials-row">
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-circle"
+                aria-label="GitHub" id="socialGitHub">
+                <svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20">
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.138 20.162 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
+                </svg>
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-circle"
+                aria-label="LinkedIn" id="socialLinkedIn">
+                <svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20">
+                  <path
+                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                </svg>
+              </a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-circle"
+                aria-label="Twitter" id="socialTwitter">
+                <svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20">
+                  <path
+                    d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+                </svg>
+              </a>
+            </div>
+
+            <div class="map-placeholder">
+              <svg class="map-svg-grid" width="100%" height="100%" stroke="currentColor" stroke-width="1.5">
+                <defs>
+                  <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <path d="M 20 0 L 0 0 0 20" fill="none" />
+                  </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid)" />
+              </svg>
+              <div class="map-marker">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                </svg>
+                <div class="map-text">Alex's Coordinates</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form-wrapper glass-card">
+            <form id="contactForm" novalidate>
+
+              <div class="form-group">
+                <label for="userName" class="form-label">Full Name</label>
+                <input type="text" id="userName" class="form-control" placeholder="John Doe">
+                <span class="error-txt"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="userEmail" class="form-label">Email Address</label>
+                <input type="email" id="userEmail" class="form-control" placeholder="john.doe@example.com">
+                <span class="error-txt"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="userMessage" class="form-label">Your Message</label>
+                <textarea id="userMessage" class="form-control"
+                  placeholder="Hi Alex, I'd love to chat about..."></textarea>
+                <span class="error-txt"></span>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;"
+                id="contactSubmitBtn">
+                <span>Send Message</span>
+                <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" width="18" height="18"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5">
+                  </path>
+                </svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-links">
+        <a href="about.html" class="footer-link" id="footerAbout">Detailed About</a>
+        <a href="projects.html" class="footer-link" id="footerProjects">Full Projects Grid</a>
+        <a href="contact.html" class="footer-link" id="footerContact">Dedicated Contact</a>
+      </div>
+      <p class="footer-copyright">
+        &copy; 2026 <strong>Alex Dev</strong>. Built with 💎 HTML5, CSS3, &amp; Vanilla JavaScript. All Rights Reserved.
+      </p>
+    </div>
+  </footer>
+
+  <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll to top">
+    <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" width="22" height="22"
+      xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5"></path>
+    </svg>
+  </button>
+
+  <div class="modal" id="successModal">
+    <div class="modal-card glass-card">
+      <div class="modal-icon">
+        <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+        </svg>
+      </div>
+      <h3 class="modal-title">Thank You!</h3>
+      <p class="modal-desc">Your message has been sent successfully. I will review your inquiry and get back to you
+        within 24 hours.</p>
+      <button class="btn btn-primary" id="closeModalBtn" style="width: 100%;">Close Window</button>
+    </div>
+  </div>
+
+  <script></script>
+
+</body>
+
+</html>

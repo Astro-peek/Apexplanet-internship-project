@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Featured Projects Grid | Alex Dev Portfolio</title>
+  <meta name="description"
+    content="Browse Alex Dev's front-end and full-stack software development projects. Filter through clean JavaScript, responsive designs, API integrations, and UI/UX projects.">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <div class="bg-blob blob-indigo"></div>
+  <div class="bg-blob blob-teal"></div>
+
+  <header class="header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo-link" id="logoLink">
+        <span class="logo-text text-gradient">Alex Dev</span>
+        <span class="logo-dot"></span>
+      </a>
+
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html" class="nav-link" id="navLinkHome">Home</a>
+        <a href="about.html" class="nav-link" id="navLinkAbout">About</a>
+        <a href="projects.html" class="nav-link active" id="navLinkProjects">Projects</a>
+        <a href="contact.html" class="nav-link" id="navLinkContact">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+          <svg class="moon-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20"
+            height="20">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z">
+            </path>
+          </svg>
+          <svg class="sun-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20"
+            height="20">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M12 3v2.25m0 13.5V21M4.93 4.93l1.591 1.591m10.954 10.954l1.591 1.591M3 12h2.25m13.5 0H21m-2.25 4.93l-1.591-1.591M6.52 6.52l-1.591-1.591M12 7.5a4.5 4.5 0 100 9 4.5 4.5 0 000-9z">
+            </path>
+          </svg>
+        </button>
+
+        <button class="hamburger" id="hamburger" aria-label="Open Navigation Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding-top: 5rem;">
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header" style="margin-bottom: 3.5rem;">
+          <h1 class="section-title">Projects Showcase</h1>
+          <p class="section-subtitle">A collection of technical endeavors demonstrating structured logic, flexible
+            layouts, and creative UI engineering.</p>
+        </div>
+
+        <div class="projects-filter">
+          <button class="filter-btn active" data-filter="all">All Projects</button>
+          <button class="filter-btn" data-filter="frontend">Frontend</button>
+          <button class="filter-btn" data-filter="fullstack">Fullstack</button>
+          <button class="filter-btn" data-filter="uiux">UI / UX</button>
+        </div>
+
+        <div class="projects-grid">
+
+          <div class="project-card glass-card" data-category="frontend">
+            <div class="project-img-wrapper">
+              <svg class="project-placeholder-svg" viewBox="0 0 350 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="350" height="200" fill="url(#p1-grad)" opacity="0.1" />
+                <path d="M50 150H300" stroke="var(--accent-1)" stroke-width="4" stroke-linecap="round" />
+                <rect x="70" y="50" width="100" height="80" rx="6" fill="var(--bg-tertiary)" stroke="var(--accent-1)"
+                  stroke-width="2" />
+                <rect x="190" y="50" width="90" height="35" rx="4" fill="var(--bg-tertiary)" />
+                <rect x="190" y="95" width="90" height="35" rx="4" fill="var(--accent-2)" opacity="0.2" />
+                <defs>
+                  <linearGradient id="p1-grad" x1="0" y1="0" x2="350" y2="200">
+                    <stop stop-color="var(--accent-1)" />
+                    <stop offset="1" stop-color="var(--accent-2)" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <div class="project-content">
+              <div class="project-tags">
+                <span class="project-tag">HTML5</span>
+                <span class="project-tag">CSS Grid</span>
+                <span class="project-tag">JS ES6</span>
+              </div>
+              <h3 class="project-title">Cyber-Cart Storefront</h3>
+              <p class="project-desc">A premium responsive e-commerce landing page with detailed item filter sorting,
+                micro-interactive cart widgets, and responsive Flexbox grid cards.</p>
+              <div class="project-links">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="project-link">
+                  <svg fill="currentColor" viewBox="0 0 24 24" width="18" height="18">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.138 20.162 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
+                  </svg>
+                  <span>Code</span>
+                </a>
+                <a href="https://google.com" target="_blank" rel="noopener noreferrer" class="project-link">
+                  <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18" height="18">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                  <span>Live Demo</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card glass-card" data-category="frontend">
+            <div class="project-img-wrapper">
+              <svg class="project-placeholder-svg" viewBox="0 0 350 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="350" height="200" fill="url(#p2-grad)" opacity="0.1" />
+                <rect x="40" y="40" width="80" height="120" rx="6" fill="var(--bg-tertiary)" stroke="var(--accent-2)"
+                  stroke-width="2" />
+                <rect x="135" y="40" width="80" height="120" rx="6" fill="var(--bg-tertiary)" opacity="0.6" />
+                <rect x="230" y="40" width="80" height="120" rx="6" fill="var(--bg-tertiary)" opacity="0.6" />
+                <circle cx="80" cy="70" r="15" fill="var(--accent-2)" opacity="0.3" />
+                <defs>
+                  <linearGradient id="p2-grad" x1="0" y1="0" x2="350" y2="200">
+                    <stop stop-color="var(--accent-1)" />
+                    <stop offset="1" stop-color="var(--accent-2)" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <div class="project-content">
+              <div class="project-tags">
+                <span class="project-tag">JS Dom</span>
+                <span class="project-tag">SVG Anim</span>
+                <span class="project-tag">Local Storage</span>
+              </div>
+              <h3 class="project-title">Apex Task Board</h3>
+              <p class="project-desc">A premium client-side KANBAN style project manager. Drag-and-drop simulated board
+                cards, full state persistence in LocalStorage, and interactive notifications.</p>
+              <div class="project-links">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="project-link">
+                  <svg fill="currentColor" viewBox="0 0 24 24" width="18" height="18">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.138 20.162 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
+                  </svg>
+                  <span>Code</span>
+                </a>
+                <a href="https://google.com" target="_blank" rel="noopener noreferrer" class="project-link">
+                  <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18" height="18">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                  <span>Live Demo</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card glass-card" data-category="frontend">
+            <div class="project-img-wrapper">
+              <svg class="project-placeholder-svg" viewBox="0 0 350 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="350" height="200" fill="url(#p3-grad)" opacity="0.1" />
+                <circle cx="175" cy="100" r="45" fill="var(--bg-tertiary)" stroke="var(--accent-1)" stroke-width="2" />
+                <path d="M150 110C150 95 165 90 180 92C195 90 205 100 205 110C215 110 220 118 215 125L135 125"
+                  fill="var(--accent-2)" opacity="0.8" />
+                <defs>
+                  <linearGradient id="p3-grad" x1="0" y1="0" x2="350" y2="200">
+                    <stop stop-color="var(--accent-1)" />
+                    <stop offset="1" stop-color="var(--accent-2)" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <div class="project-content">
+              <div class="project-tags">
+                <span class="project-tag">API Fetch</span>
+                <span class="project-tag">Async / Await</span>
+                <span class="project-tag">CSS Flex</span>
+              </div>
+              <h3 class="project-title">Sky-Cast Weather</h3>
+              <p class="project-desc">A beautiful weather application. Fetches meteorological telemetry using
+                geographical coordinates, displays a 5-day predictive forecast, and scales with smooth HSL colors.</p>
+              <div class="project-links">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="project-link">
+                  <svg fill="currentColor" viewBox="0 0 24 24" width="18" height="18">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.138 20.162 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
+                  </svg>
+                  <span>Code</span>
+                </a>
+                <a href="https://google.com" target="_blank" rel="noopener noreferrer" class="project-link">
+                  <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18" height="18">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                  <span>Live Demo</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card glass-card" data-category="fullstack">
+            <div class="project-img-wrapper">
+              <svg class="project-placeholder-svg" viewBox="0 0 350 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="350" height="200" fill="url(#p4-grad)" opacity="0.1" />
+                <circle cx="175" cy="80" r="30" fill="var(--bg-tertiary)" stroke="var(--accent-1)" stroke-width="2" />
+                <circle cx="120" cy="140" r="22" fill="var(--bg-tertiary)" />
+                <circle cx="230" cy="140" r="22" fill="var(--bg-tertiary)" />
+                <line x1="175" y1="110" x2="120" y2="140" stroke="var(--accent-2)" stroke-width="2" />
+                <line x1="175" y1="110" x2="230" y2="140" stroke="var(--accent-2)" stroke-width="2" />
+                <defs>
+                  <linearGradient id="p4-grad" x1="0" y1="0" x2="350" y2="200">
+                    <stop stop-color="var(--accent-1)" />
+                    <stop offset="1" stop-color="var(--accent-2)" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <div class="project-content">
+              <div class="project-tags">
+                <span class="project-tag">Node.js</span>
+                <span class="project-tag">Express</span>
+                <span class="project-tag">MongoDB</span>
+              </div>
+              <h3 class="project-title">DevConnect Portal</h3>
+              <p class="project-desc">A full-stack social network hub for engineers. Create profiles, publish
+                technological projects, write text articles, and comment on other creative assets.</p>
+              <div class="project-links">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="project-link">
+                  <svg fill="currentColor" viewBox="0 0 24 24" width="18" height="18">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.138 20.162 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
+                  </svg>
+                  <span>Code</span>
+                </a>
+                <a href="https://google.com" target="_blank" rel="noopener noreferrer" class="project-link">
+                  <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18" height="18">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                  <span>Live Demo</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card glass-card" data-category="fullstack">
+            <div class="project-img-wrapper">
+              <svg class="project-placeholder-svg" viewBox="0 0 350 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="350" height="200" fill="url(#p5-grad)" opacity="0.1" />
+                <circle cx="175" cy="100" r="25" fill="var(--accent-1)" />
+                <circle cx="175" cy="100" r="60" stroke="var(--accent-2)" stroke-width="2" stroke-dasharray="5 5"
+                  fill="none" />
+                <circle cx="115" cy="100" r="10" fill="var(--bg-tertiary)" stroke="var(--accent-2)" stroke-width="2" />
+                <defs>
+                  <linearGradient id="p5-grad" x1="0" y1="0" x2="350" y2="200">
+                    <stop stop-color="var(--accent-1)" />
+                    <stop offset="1" stop-color="var(--accent-2)" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <div class="project-content">
+              <div class="project-tags">
+                <span class="project-tag">Canvas 2D</span>
+                <span class="project-tag">Node.js</span>
+                <span class="project-tag">SQL DB</span>
+              </div>
+              <h3 class="project-title">Solar Physics Engine</h3>
+              <p class="project-desc">An interactive simulation tool that renders gravity vectors and planetary orbits.
+                Includes user authentication and telemetry recording on a backend SQL database.</p>
+              <div class="project-links">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="project-link">
+                  <svg fill="currentColor" viewBox="0 0 24 24" width="18" height="18">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.138 20.162 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
+                  </svg>
+                  <span>Code</span>
+                </a>
+                <a href="https://google.com" target="_blank" rel="noopener noreferrer" class="project-link">
+                  <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18" height="18">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                  <span>Live Demo</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card glass-card" data-category="uiux">
+            <div class="project-img-wrapper">
+              <svg class="project-placeholder-svg" viewBox="0 0 350 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="350" height="200" fill="url(#p6-grad)" opacity="0.1" />
+                <circle cx="100" cy="100" r="30" fill="url(#p6-grad)" opacity="0.6" />
+                <rect x="180" y="60" width="100" height="30" rx="15" fill="var(--bg-tertiary)" stroke="var(--accent-2)"
+                  stroke-width="2" />
+                <rect x="180" y="110" width="80" height="30" rx="6" fill="var(--accent-2)" opacity="0.2" />
+                <defs>
+                  <linearGradient id="p6-grad" x1="0" y1="0" x2="350" y2="200">
+                    <stop stop-color="var(--accent-1)" />
+                    <stop offset="1" stop-color="var(--accent-2)" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <div class="project-content">
+              <div class="project-tags">
+                <span class="project-tag">Figma Design</span>
+                <span class="project-tag">CSS Var Theme</span>
+                <span class="project-tag">Aesthetics</span>
+              </div>
+              <h3 class="project-title">Cyberpunk UI System</h3>
+              <p class="project-desc">A beautiful design library built for Figma and CSS variables. Features glowing
+                glass components, harmonic color tokens, custom inputs, and dynamic animations.</p>
+              <div class="project-links">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="project-link">
+                  <svg fill="currentColor" viewBox="0 0 24 24" width="18" height="18">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.138 20.162 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
+                  </svg>
+                  <span>Design View</span>
+                </a>
+                <a href="https://google.com" target="_blank" rel="noopener noreferrer" class="project-link">
+                  <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18" height="18">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                  <span>Figma Preview</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-links">
+        <a href="index.html" class="footer-link" id="footerHome">Home / About Summary</a>
+        <a href="about.html" class="footer-link" id="footerAbout">Detailed About</a>
+        <a href="contact.html" class="footer-link" id="footerContact">Dedicated Contact</a>
+      </div>
+      <p class="footer-copyright">
+        &copy; 2026 <strong>Alex Dev</strong>. Built with 💎 HTML5, CSS3, &amp; Vanilla JavaScript. All Rights Reserved.
+      </p>
+    </div>
+  </footer>
+
+  <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll to top">
+    <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" width="22" height="22"
+      xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5"></path>
+    </svg>
+  </button>
+
+  <script></script>
+
+</body>
+
+</html>
